@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    /* set width to 100vh so that available width when filled makes a square */
+    width: 100vh;
+    /* moves container to centre of screen */
+    margin: auto;
+}
+
+#gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid {
+    /* 100vh/8grids = 6.25vh/grid */
+    height: 6.25vh;
+    /* height = width for square */
+    width: 6.25vh;
+    border: 1px solid black ;
+    /* include border in size calculation for box */
+    box-sizing: border-box;
+}
