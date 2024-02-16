@@ -24,7 +24,3 @@ button {
     /* include border in size calculation for box */
     box-sizing: border-box;
 }
-
-.hovered {
-    background-color: black;
-}

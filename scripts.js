@@ -13,11 +13,13 @@ function createGrid (numOfSquaresPerSide) {
         div.style.width = div.style.height;
     
         div.addEventListener("mouseover", () => {
-            div.classList.toggle("hovered");
+            // div.classList.toggle("hovered");
+            div.style.backgroundColor = `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
         })
     
         div.addEventListener("mouseout", () => {
-            div.classList.toggle("hovered");
+            // div.classList.toggle("hovered");
+            div.style.backgroundColor = null;
         })
     
         gridContainer.appendChild(div);
