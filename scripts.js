@@ -11,15 +11,23 @@ function createGrid (numOfSquaresPerSide) {
         div.style.height = (Number(HEIGHT_OF_GRID.replace("px", ""))/numOfSquaresPerSide) + "px";
         // for square height = width
         div.style.width = div.style.height;
+        div.brightness = 0;
     
         div.addEventListener("mouseover", () => {
             // div.classList.toggle("hovered");
-            div.style.backgroundColor = `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
+            if (!div.brightness) {
+                div.brightness = 10
+                div.style.filter = `brightness(${div.brightness}%)`
+                div.style.backgroundColor = `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}`;
+            } else {
+                div.brightness += 10
+                div.style.filter = `brightness(${div.brightness}%)`
+            }
         })
     
         div.addEventListener("mouseout", () => {
             // div.classList.toggle("hovered");
-            div.style.backgroundColor = null;
+            // div.style.backgroundColor = null;
         })
     
         gridContainer.appendChild(div);
