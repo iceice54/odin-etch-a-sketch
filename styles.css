@@ -4,6 +4,14 @@ body {
     width: 100vh;
     /* moves container to centre of screen */
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    height: 30px;
+    width: 150px;
 }
 
 #gridContainer {
@@ -11,11 +19,7 @@ body {
     flex-wrap: wrap;
 }
 
-.grid {
-    /* 100vh/8grids = 6.25vh/grid */
-    height: 6.25vh;
-    /* height = width for square */
-    width: 6.25vh;
+.square {
     border: 1px solid black ;
     /* include border in size calculation for box */
     box-sizing: border-box;

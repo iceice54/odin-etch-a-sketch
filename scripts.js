@@ -1,18 +1,42 @@
+//calculated using height of viewport - height of button
+const HEIGHT_OF_GRID = "936px";
 const gridContainer = document.querySelector("#gridContainer");
 
-for (let i = 0; i < (16 * 16); i++) {
-    const div = document.createElement("div");
-    div.classList.toggle("grid");
+function createGrid (numOfSquaresPerSide) {
+    for (let i = 0; i < (numOfSquaresPerSide * numOfSquaresPerSide); i++) {
+        const div = document.createElement("div");
+        div.classList.toggle("square");
 
-    div.addEventListener("mouseover", () => {
-        div.classList.toggle("hovered");
-        console.log("hovered")
-    })
-
-    div.addEventListener("mouseout", () => {
-        div.classList.toggle("hovered");
-        console.log("unhovered")
-    })
-
-    gridContainer.appendChild(div);
+        // calculate height of square = height of grid/squares per side
+        div.style.height = (Number(HEIGHT_OF_GRID.replace("px", ""))/numOfSquaresPerSide) + "px";
+        // for square height = width
+        div.style.width = div.style.height;
+    
+        div.addEventListener("mouseover", () => {
+            div.classList.toggle("hovered");
+        })
+    
+        div.addEventListener("mouseout", () => {
+            div.classList.toggle("hovered");
+        })
+    
+        gridContainer.appendChild(div);
+    }
 }
+
+const newGridButton = document.querySelector("#newGridButton");
+
+newGridButton.addEventListener("click", () => {
+    console.log("click")
+    let numOfSquaresPerSide = prompt("How many number of squares per side from 1-100 would you like in the new grid?");
+    //deal with invalid inputs
+    if (numOfSquaresPerSide == null | numOfSquaresPerSide < 1 | numOfSquaresPerSide > 100) {
+        alert("Please enter a value between 1 and 100.")
+    } else {
+        //replaceChildren removes all children from the gridContainer, clearing all previous divs
+        gridContainer.replaceChildren();
+        createGrid(numOfSquaresPerSide);
+    }
+})
+
+createGrid(16);
